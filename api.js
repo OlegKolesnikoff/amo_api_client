@@ -20,8 +20,6 @@ const clientSettings = {
   CLIENT_SECRET: null,
   CLIENT_ID: null,
   AMO_INSTALL_URL: null,
-  _setAppSettings: null,
-  _changeDomain: null,
 };
 
 Object.assign(chatApi, chatSettings);
