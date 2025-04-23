@@ -1,0 +1,25 @@
+{
+  "name": "amo_api_client",
+  "version": "1.0.1",
+  "description": "amo api client for node.js",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegKolesnikoff/amo_api_client.git"
+  },
+  "keywords": [
+    "amo",
+    "api",
+    "client",
+    "crm"
+  ],
+  "author": "Kolesnikov O.S.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OlegKolesnikoff/amo_api_client/issues"
+  },
+  "homepage": "https://github.com/OlegKolesnikoff/amo_api_client#readme"
+}
