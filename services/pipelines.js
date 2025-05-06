@@ -12,7 +12,13 @@ module.exports = {
     const result = await client.fetcher(url, params, auth);
 
     if (result?._embedded?.pipelines) {
-      return result?._embedded?.pipelines?.map((pipe) => ({ id: pipe.id, name: pipe.name }));
+      return (
+        result?._embedded?.pipelines?.map((pipe) => ({
+          id: pipe.id,
+          name: pipe.name,
+          statuses: pipe._embedded?.statuses,
+        })) || []
+      );
     }
   },
 };
