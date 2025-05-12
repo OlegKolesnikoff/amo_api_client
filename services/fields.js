@@ -14,7 +14,23 @@ module.exports = {
   },
 
   async getFieldsByEntity(entity, auth) {
-    const fields = ['text', 'numeric', 'checkbox', 'select', 'multiselect', 'date', 'url', 'textarea', 'radiobutton', 'streetaddress', 'smart_address', 'birthday', 'date_time', 'price', 'category'];
+    const fields = [
+      'text',
+      'numeric',
+      'checkbox',
+      'select',
+      'multiselect',
+      'date',
+      'url',
+      'textarea',
+      'radiobutton',
+      'streetaddress',
+      'smart_address',
+      'birthday',
+      'date_time',
+      'price',
+      'category',
+    ];
     const url = `https://${auth.domain}/api/v4/${entity}/custom_fields`;
     const queryParams = fields.map((field, index) => `filter[type][${index}]=${field}`).join('&');
     const urlWithParams = `${url}?${queryParams}`;
