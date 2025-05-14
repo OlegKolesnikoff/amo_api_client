@@ -21,4 +21,16 @@ module.exports = {
       );
     }
   },
+
+  async getPipeline(pipelineId, auth) {
+    const url = `https://${auth.domain}/api/v4/leads/pipelines/${pipelineId}`;
+    const params = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access_token}`,
+      },
+    };
+    const result = await client.fetcher(url, params, auth);
+    return result;
+  },
 };
