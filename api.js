@@ -7,6 +7,7 @@ const fieldApi = require('./services/fields');
 const userApi = require('./services/users');
 const pipleneApi = require('./services/pipelines');
 const tagApi = require('./services/tags');
+const sourcesApi = require('./services/sources');
 
 module.exports = {
   chatApi,
@@ -18,5 +19,6 @@ module.exports = {
   userApi,
   pipleneApi,
   tagApi,
+  sourcesApi
 };
 
