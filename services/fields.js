@@ -30,6 +30,7 @@ module.exports = {
       'date_time',
       'price',
       'category',
+      'multitext'
     ];
     const url = `https://${auth.domain}/api/v4/${entity}/custom_fields`;
     const queryParams = fields.map((field, index) => `filter[type][${index}]=${field}`).join('&');
