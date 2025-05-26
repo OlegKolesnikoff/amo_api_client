@@ -13,6 +13,18 @@ module.exports = {
     return result;
   },
 
+  async getContactFieldsByType(type, auth) {
+    const url = `https://${auth.domain}/api/v4/contacts/custom_fields?filter[type][0]=${type}`;
+    const params = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access_token}`,
+      },
+    };
+    const result = await client.fetcher(url, params, auth);
+    return result?._embedded?.custom_fields || [];
+  },
+
   async getFieldsByEntity(entity, auth) {
     const fields = [
       'text',
