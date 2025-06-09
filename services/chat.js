@@ -3,8 +3,8 @@ const client = require('./client');
 
 module.exports = {
   DOMAIN: 'https://amojo.amocrm.ru',
-  AMO_CHANEL_ID: '',
-  AMO_CHANEL_SECRET: '',
+  AMO_CHANNEL_ID: '',
+  AMO_CHANNEL_SECRET: '',
   HOOK_API_VERSION: 'v2',
   TITLE: '',
 
@@ -16,20 +16,20 @@ module.exports = {
   },
 
   /* Поключение канала к аккаунту */
-  async connectChanel(account_id) {
+  async connectChannel(account_id) {
     const payload = {
       account_id,
       hook_api_version: this.HOOK_API_VERSION,
       title: this.TITLE,
     };
-    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANEL_ID}/connect`, 'POST', payload);
+    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANNEL_ID}/connect`, 'POST', payload);
     return result.scope_id;
   },
 
   /* Отключение канала чата в аккаунте */
-  async disconnectChanel(account_id) {
+  async disconnectChannel(account_id) {
     const payload = { account_id };
-    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANEL_ID}/disconnect`, 'DELETE', payload);
+    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANNEL_ID}/disconnect`, 'DELETE', payload);
     return result;
   },
 
@@ -62,7 +62,7 @@ module.exports = {
 
   /* Передача информации о печатание */
   async statusTyping(payload) {
-    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANEL_ID}/typing`, 'POST', payload);
+    const result = await this._call(`/v2/origin/custom/${this.AMO_CHANNEL_ID}/typing`, 'POST', payload);
     return result;
   },
 
@@ -73,7 +73,7 @@ module.exports = {
     const content_type = 'application/json';
     const content_md5 = crypto.createHash('md5').update(body).digest('hex') || '';
     const secret = [method, content_md5, content_type, date, cleanPath].join('\n');
-    const x_secret = crypto.createHmac('sha1', this.AMO_CHANEL_SECRET).update(secret).digest('hex');
+    const x_secret = crypto.createHmac('sha1', this.AMO_CHANNEL_SECRET).update(secret).digest('hex');
     const headers = {
       method,
       headers: {
