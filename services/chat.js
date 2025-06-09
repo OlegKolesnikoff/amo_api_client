@@ -15,7 +15,7 @@ module.exports = {
     return result;
   },
 
-  /* Поключение канала к аккаунту */
+  /* Подключение канала к аккаунту */
   async connectChanel(account_id) {
     const payload = {
       account_id,
@@ -60,7 +60,7 @@ module.exports = {
     return result;
   },
 
-  /* Передача информации о печатание */
+  /* Передача информации о печатании */
   async statusTyping(payload) {
     const result = await this._call(`/v2/origin/custom/${this.AMO_CHANEL_ID}/typing`, 'POST', payload);
     return result;
