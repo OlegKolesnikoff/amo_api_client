@@ -20,7 +20,7 @@ module.exports = [
   },
 
   {
-    ignores: ['slider/', 'placement/', 'test.js'],
+    ignores: ['slider/', 'placement/', '__tests__/'],
   },
   {
     rules: {
