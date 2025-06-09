@@ -5,7 +5,7 @@ const leadApi = require('./services/leads');
 const contactApi = require('./services/contacts');
 const fieldApi = require('./services/fields');
 const userApi = require('./services/users');
-const pipleneApi = require('./services/pipelines');
+const pipelineApi = require('./services/pipelines');
 const tagApi = require('./services/tags');
 const sourcesApi = require('./services/sources');
 
@@ -17,7 +17,7 @@ module.exports = {
   contactApi,
   fieldApi,
   userApi,
-  pipleneApi,
+  pipelineApi,
   tagApi,
   sourcesApi
 };
