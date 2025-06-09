@@ -15,7 +15,7 @@ module.exports = {
     return result;
   },
 
-  /* Поключение канала к аккаунту */
+  /* Подключение канала к аккаунту */
   async connectChannel(account_id) {
     const payload = {
       account_id,
@@ -60,7 +60,7 @@ module.exports = {
     return result;
   },
 
-  /* Передача информации о печатание */
+  /* Передача информации о печатании */
   async statusTyping(payload) {
     const result = await this._call(`/v2/origin/custom/${this.AMO_CHANNEL_ID}/typing`, 'POST', payload);
     return result;
@@ -71,7 +71,10 @@ module.exports = {
     const [cleanPath] = path.split('?');
     const date = new Date().toUTCString() || '';
     const content_type = 'application/json';
-    const content_md5 = crypto.createHash('md5').update(body).digest('hex') || '';
+    let content_md5 = '';
+    if (body) {
+      content_md5 = crypto.createHash('md5').update(body).digest('base64');
+    }
     const secret = [method, content_md5, content_type, date, cleanPath].join('\n');
     const x_secret = crypto.createHmac('sha1', this.AMO_CHANNEL_SECRET).update(secret).digest('hex');
     const headers = {
