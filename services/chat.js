@@ -71,7 +71,10 @@ module.exports = {
     const [cleanPath] = path.split('?');
     const date = new Date().toUTCString() || '';
     const content_type = 'application/json';
-    const content_md5 = crypto.createHash('md5').update(body).digest('hex') || '';
+    let content_md5 = '';
+    if (body) {
+      content_md5 = crypto.createHash('md5').update(body).digest('base64');
+    }
     const secret = [method, content_md5, content_type, date, cleanPath].join('\n');
     const x_secret = crypto.createHmac('sha1', this.AMO_CHANEL_SECRET).update(secret).digest('hex');
     const headers = {
