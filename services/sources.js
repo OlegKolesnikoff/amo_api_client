@@ -57,4 +57,22 @@ module.exports = {
     const result = await client.fetcher(url, params, auth);
     return result;
   },
+
+  async getSources(auth) {
+    const url = `https://${auth.domain}/api/v4/sources`;
+    const params = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access_token}`,
+      },
+    };
+
+    const result = await client.fetcher(url, params, auth);
+
+    if (result?._embedded?.sources) {
+      return result._embedded.sources;
+    }
+
+    return [];
+  },
 };

@@ -33,4 +33,26 @@ module.exports = {
     const result = await client.fetcher(url, params, auth);
     return result;
   },
+
+  async updateSourcePipeline(sourceId, pipelineId, auth) {
+    // Источники и воронки в amoCRM - разные сущности
+    // Для изменения привязки источника к воронке используем API источников
+    const url = `https://${auth.domain}/api/v4/sources/${sourceId}`;
+
+    const data = {
+      pipeline_id: parseInt(pipelineId, 10),
+    };
+
+    const params = {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${auth.access_token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    const result = await client.fetcher(url, params, auth);
+    return result;
+  },
 };
